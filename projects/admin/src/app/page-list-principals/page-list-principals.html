@@ -1,6 +1,5 @@
-<article *transloco="let t">
-  <hlm-button-group>
-    <!-- <h1>{{ t('Principals') }}</h1> -->
+<article *transloco="let t" class="@container">
+  <a9-floating-filter-bar>
     <hlm-field orientation="horizontal">
       <hlm-input-group title="">
         <input type="search" hlmInputGroupInput [formField]="searchForm.searchterm" />
@@ -14,7 +13,7 @@
       @for(ptype of emptySearchForm().filterByType; track $index) {
       <button hlmToggleGroupItem [value]="ptype">
         <cal-icon-principal-type [type]="ptype" />
-        <cal-label-principal-type [type]="ptype" />
+        <cal-label-principal-type [type]="ptype" class="hidden @xl:inline" />
       </button>
       }
     </hlm-toggle-group>
@@ -23,7 +22,7 @@
       (click)="refresh()">
       <ng-icon [name]="searchForm().dirty() ? 'matFilterAltOffFillOutline' : 'matFilterAltFillOutline'" />
     </button>
-  </hlm-button-group>
+  </a9-floating-filter-bar>
 
   <section>
     <a9-http-resource-viewer [resource]="principals">
